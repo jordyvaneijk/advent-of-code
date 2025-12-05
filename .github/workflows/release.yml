@@ -1,0 +1,44 @@
+name: CI/CD NuGet
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  build-test-pack:
+    runs-on: windows-latest
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Run tests with coverage
+        run: dotnet test --collect:"XPlat Code Coverage"
+
+      - name: Check coverage
+        run: |
+          report=$(dotnet tool run coverlet ./AdventOfCode.Common.Tests/bin/Debug/net10.0/AdventOfCode.Common.Tests.dll --target "dotnet" --targetargs "test --no-build")
+          coverage=$(echo $report | grep -oP 'Line coverage: \K[0-9]+')
+          if [ "$coverage" -lt 80 ]; then
+            echo "Code coverage $coverage% is below threshold."
+            exit 1
+          fi
+
+      - name: Pack NuGet
+        run: dotnet pack AdventOfCode.Common/AdventOfCode.Common.csproj --configuration Release
+
+      - name: Publish NuGet
+        run: dotnet nuget push AdventOfCode.Common/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+
