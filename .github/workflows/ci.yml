@@ -20,7 +20,7 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build AdventOfCode.Common.slnx --configuration Release --no-restore
+        run: dotnet build src/AdventOfCode.Common/AdventOfCode.Common.slnx --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test AdventOfCode.Common.Tests/AdventOfCode.Common.Tests.csproj --no-build --configuration Release
+        run: dotnet test src/AdventOfCode.Common/AdventOfCode.Common.Tests/AdventOfCode.Common.Tests.csproj --no-build --configuration Release
