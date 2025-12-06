@@ -20,14 +20,14 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore ./src/AdventOfCode.Common/AdventOfCode.Common.slnx
 
       - name: Run tests with coverage
-        run: dotnet test --collect:"XPlat Code Coverage"
+        run: dotnet test ./src/AdventOfCode.Common/AdventOfCode.Common.Tests/AdventOfCode.Common.Tests.csproj --collect:"XPlat Code Coverage"
 
       - name: Check coverage
         run: |
-          report=$(dotnet tool run coverlet ./AdventOfCode.Common.Tests/bin/Debug/net10.0/AdventOfCode.Common.Tests.dll --target "dotnet" --targetargs "test --no-build")
+          report=$(dotnet tool run coverlet ./src/AdventOfCode.Common/AdventOfCode.Common.Tests/bin/Debug/net10.0/AdventOfCode.Common.Tests.dll --target "dotnet" --targetargs "test --no-build")
           coverage=$(echo $report | grep -oP 'Line coverage: \K[0-9]+')
           if [ "$coverage" -lt 80 ]; then
             echo "Code coverage $coverage% is below threshold."
@@ -35,10 +35,10 @@ jobs:
           fi
 
       - name: Pack NuGet
-        run: dotnet pack AdventOfCode.Common/AdventOfCode.Common.csproj --configuration Release
+        run: dotnet pack ./src/AdventOfCode.Common/AdventOfCode.Common/AdventOfCode.Common.csproj --configuration Release
 
       - name: Publish NuGet
-        run: dotnet nuget push AdventOfCode.Common/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push ./src/AdventOfCode.Common/AdventOfCode.Common/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 
