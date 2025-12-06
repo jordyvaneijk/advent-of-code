@@ -4,6 +4,14 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Title>Advent of Code Common Library</Title>
+        <Authors>Jordy van Eijk</Authors>
+        <Description>A helper package for helping with the yearly AdventOfCode. Almost every year i try to invend the wheel again and again for helping with Grids, Ranges and reading the input. </Description>
+        <Copyright>Van Eijk - Development</Copyright>
+        <PackageLicenseUrl>https://github.com/jordyvaneijk/advent-of-code/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/jordyvaneijk/advent-of-code</RepositoryUrl>
+        <PackageTags>advent-of-code, aoc </PackageTags>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
 </Project>
