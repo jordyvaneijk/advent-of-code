@@ -16,8 +16,11 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
+      - name: Print working directory
+        run: cd
+
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore ./src/AdventOfCode.Common/AdventOfCode.Common.slnx
 
       - name: Build
         run: dotnet build ./src/AdventOfCode.Common/AdventOfCode.Common.slnx --configuration Release --no-restore
