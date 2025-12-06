@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="AdventOfCode.Common.Tests/AdventOfCode.Common.Tests.csproj" />
+  <Project Path="AdventOfCode.Common/AdventOfCode.Common.csproj" />
+</Solution>
