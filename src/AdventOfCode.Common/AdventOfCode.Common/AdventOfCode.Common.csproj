@@ -12,6 +12,7 @@
         <RepositoryUrl>https://github.com/jordyvaneijk/advent-of-code</RepositoryUrl>
         <PackageTags>advent-of-code, aoc </PackageTags>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
 </Project>
