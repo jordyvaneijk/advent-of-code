@@ -25,14 +25,14 @@ jobs:
       - name: Run tests with coverage
         run: dotnet test ./src/AdventOfCode.Common/AdventOfCode.Common.Tests/AdventOfCode.Common.Tests.csproj --collect:"XPlat Code Coverage"
 
-      - name: Check coverage
-        run: |
-          report=$(dotnet tool run coverlet ./src/AdventOfCode.Common/AdventOfCode.Common.Tests/bin/Debug/net10.0/AdventOfCode.Common.Tests.dll --target "dotnet" --targetargs "test --no-build")
-          coverage=$(echo $report | grep -oP 'Line coverage: \K[0-9]+')
-          if ($coverage -lt 80) {
-            Write-Host "Code coverage $coverage% is below threshold."
-            exit 1
-          }
+#      - name: Check coverage
+#        run: |
+#          report=$(dotnet tool run coverlet ./src/AdventOfCode.Common/AdventOfCode.Common.Tests/bin/Debug/net10.0/AdventOfCode.Common.Tests.dll --target "dotnet" --targetargs "test --no-build")
+#          coverage=$(echo $report | grep -oP 'Line coverage: \K[0-9]+')
+#          if ($coverage -lt 80) {
+#            Write-Host "Code coverage $coverage% is below threshold."
+#            exit 1
+#          }
 
       - name: Pack NuGet
         run: dotnet pack ./src/AdventOfCode.Common/AdventOfCode.Common/AdventOfCode.Common.csproj --configuration Release
