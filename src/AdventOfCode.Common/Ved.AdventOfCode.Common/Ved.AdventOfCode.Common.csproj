@@ -8,11 +8,18 @@
         <Authors>Jordy van Eijk</Authors>
         <Description>A helper package for helping with the yearly AdventOfCode. Almost every year i try to invend the wheel again and again for helping with Grids, Ranges and reading the input. </Description>
         <Copyright>Van Eijk - Development</Copyright>
-        <PackageLicenseUrl>https://github.com/jordyvaneijk/advent-of-code/blob/main/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/jordyvaneijk/advent-of-code</RepositoryUrl>
         <PackageTags>advent-of-code, aoc </PackageTags>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>1.1.0</Version>
+        <AssemblyName>Ved.AdventOfCode.Common</AssemblyName>
+        <RootNamespace>Ved.AdventOfCode.Common</RootNamespace>
     </PropertyGroup>
-
+    <ItemGroup>
+        <None Include="docs\README.md" Pack="true" PackagePath="\"/>
+        <None Include="docs\LICENSE" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 </Project>

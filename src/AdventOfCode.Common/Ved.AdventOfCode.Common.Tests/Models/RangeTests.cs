@@ -1,4 +1,4 @@
-using AdventOfCode.Common.Models;
+using Ved.AdventOfCode.Common.Models;
 
 namespace AdventOfCode.Common.Tests.Models;
 

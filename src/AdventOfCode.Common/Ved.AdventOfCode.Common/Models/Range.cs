@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace AdventOfCode.Common.Models;
+namespace Ved.AdventOfCode.Common.Models;
 
 public class Range<T> where T : INumber<T>
 {
